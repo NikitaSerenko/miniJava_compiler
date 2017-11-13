@@ -69,20 +69,16 @@
 
 #include "src/printer.h"  
 
-
-#define RED "\x1b[31m"
-#define RESET "\x1b[0m"
-
 extern "C" int yylex();
 
 void yyerror(char *s) 
 {
-  printf (RED "%s\n" RESET, s);
+  printf ("%s\n", s);
 }
 
 Printer *pp = new Printer("./graph.gv");
 
-#line 86 "bison.tab.cc" /* yacc.c:339  */
+#line 82 "bison.tab.cc" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -170,7 +166,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 22 "bison.yy" /* yacc.c:355  */
+#line 18 "bison.yy" /* yacc.c:355  */
 
 	int intVal;
 	char* nameId;
@@ -195,7 +191,7 @@ union YYSTYPE
   ArgDeclList *args;
   BasicType *basicType;
 
-#line 199 "bison.tab.cc" /* yacc.c:355  */
+#line 195 "bison.tab.cc" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -226,7 +222,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 230 "bison.tab.cc" /* yacc.c:358  */
+#line 226 "bison.tab.cc" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -530,13 +526,13 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   132,   132,   133,   136,   142,   143,   146,   147,   148,
-     149,   150,   151,   152,   153,   156,   157,   160,   163,   164,
-     167,   169,   171,   173,   177,   178,   179,   182,   183,   186,
-     187,   188,   189,   192,   193,   196,   197,   198,   199,   200,
-     201,   204,   205,   208,   209,   210,   211,   212,   213,   214,
-     215,   216,   217,   218,   219,   220,   221,   222,   223,   224,
-     225,   226,   227,   230
+       0,   128,   128,   129,   132,   138,   139,   142,   143,   144,
+     145,   146,   147,   148,   149,   152,   153,   156,   159,   160,
+     163,   165,   167,   169,   173,   174,   175,   178,   179,   182,
+     183,   184,   185,   188,   189,   192,   193,   194,   195,   196,
+     197,   200,   201,   204,   205,   206,   207,   208,   209,   210,
+     211,   212,   213,   214,   215,   216,   217,   218,   219,   220,
+     221,   222,   223,   226
 };
 #endif
 
@@ -1563,379 +1559,379 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 132 "bison.yy" /* yacc.c:1646  */
+#line 128 "bison.yy" /* yacc.c:1646  */
     {(yyval.program) = new Program((MainClass *)((yyvsp[-1].mainClass))); (yyval.program)->accept(pp); printf("goal only\n");}
-#line 1569 "bison.tab.cc" /* yacc.c:1646  */
+#line 1565 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 133 "bison.yy" /* yacc.c:1646  */
+#line 129 "bison.yy" /* yacc.c:1646  */
     {(yyval.program) = new Program((MainClass *)((yyvsp[-2].mainClass)), (ClassDeclList *)((yyvsp[-1].classSeq))); (yyval.program)->accept(pp); printf("goal\n");}
-#line 1575 "bison.tab.cc" /* yacc.c:1646  */
+#line 1571 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 139 "bison.yy" /* yacc.c:1646  */
-    {(yyval.mainClass) = new MainClass((Id *)((yyvsp[-13].myId)), (Id *)((yyvsp[-5].myId)), (StatementList *)((yyvsp[-2].statementSeq))); printf("main_class\n");}
-#line 1581 "bison.tab.cc" /* yacc.c:1646  */
+#line 135 "bison.yy" /* yacc.c:1646  */
+    {(yyval.mainClass) = new MainClass((Id *)((yyvsp[-13].myId)), (Id *)((yyvsp[-5].myId)), (StatementList *)((yyvsp[-2].statementSeq)));}
+#line 1577 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 142 "bison.yy" /* yacc.c:1646  */
-    {(yyval.classSeq) = new ClassDeclList((ClassDeclList *)((yyvsp[-1].classSeq)), (ClassDecl *)((yyvsp[0].myClass))); printf("classes\n");}
-#line 1587 "bison.tab.cc" /* yacc.c:1646  */
+#line 138 "bison.yy" /* yacc.c:1646  */
+    {(yyval.classSeq) = new ClassDeclList((ClassDeclList *)((yyvsp[-1].classSeq)), (ClassDecl *)((yyvsp[0].myClass)));}
+#line 1583 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 143 "bison.yy" /* yacc.c:1646  */
-    {(yyval.classSeq) = new ClassDeclList((ClassDecl *)((yyvsp[0].myClass))); printf("classes\n");}
-#line 1593 "bison.tab.cc" /* yacc.c:1646  */
+#line 139 "bison.yy" /* yacc.c:1646  */
+    {(yyval.classSeq) = new ClassDeclList((ClassDecl *)((yyvsp[0].myClass)));}
+#line 1589 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 146 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-2].myId)), nullptr); printf("class (%s)\n", (yyvsp[-2].myId) );}
-#line 1599 "bison.tab.cc" /* yacc.c:1646  */
+#line 142 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-2].myId)), nullptr);}
+#line 1595 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 147 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-3].myId)), nullptr, (VarDeclList *)((yyvsp[-1].variables))); printf("class (%s) vars\n", (yyvsp[-3].myId) );}
-#line 1605 "bison.tab.cc" /* yacc.c:1646  */
+#line 143 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-3].myId)), nullptr, (VarDeclList *)((yyvsp[-1].variables)));}
+#line 1601 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 148 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-3].myId)), nullptr, (MethodDeclList *)((yyvsp[-1].methods))); printf("class (%s) methods\n", (yyvsp[-3].myId) );}
-#line 1611 "bison.tab.cc" /* yacc.c:1646  */
+#line 144 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-3].myId)), nullptr, (MethodDeclList *)((yyvsp[-1].methods)));}
+#line 1607 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 149 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-4].myId)), nullptr, (VarDeclList *)((yyvsp[-2].variables)), (MethodDeclList *)((yyvsp[-1].methods))); printf("class (%s) vars methods\n", (yyvsp[-4].myId));}
-#line 1617 "bison.tab.cc" /* yacc.c:1646  */
+#line 145 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-4].myId)), nullptr, (VarDeclList *)((yyvsp[-2].variables)), (MethodDeclList *)((yyvsp[-1].methods)));}
+#line 1613 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 150 "bison.yy" /* yacc.c:1646  */
+#line 146 "bison.yy" /* yacc.c:1646  */
     {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-4].myId)), (Id *)((yyvsp[-2].myId))); printf("class ext (%s)\n", (yyvsp[-4].myId) );}
-#line 1623 "bison.tab.cc" /* yacc.c:1646  */
+#line 1619 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 151 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-5].myId)), (Id *)((yyvsp[-3].myId)), (VarDeclList *)((yyvsp[-1].variables))); printf("class ext (%s) vars\n", (yyvsp[-5].myId) );}
-#line 1629 "bison.tab.cc" /* yacc.c:1646  */
+#line 147 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-5].myId)), (Id *)((yyvsp[-3].myId)), (VarDeclList *)((yyvsp[-1].variables)));}
+#line 1625 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 152 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-5].myId)), (Id *)((yyvsp[-3].myId)), (MethodDeclList *)((yyvsp[-1].methods))); printf("class ext (%s) methods\n", (yyvsp[-5].myId) );}
-#line 1635 "bison.tab.cc" /* yacc.c:1646  */
+#line 148 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-5].myId)), (Id *)((yyvsp[-3].myId)), (MethodDeclList *)((yyvsp[-1].methods)));}
+#line 1631 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 153 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-6].myId)), (Id *)((yyvsp[-4].myId)), (VarDeclList *)((yyvsp[-2].variables)), (MethodDeclList *)((yyvsp[-1].methods))); printf("class ext(%s) vars methods\n", (yyvsp[-6].myId));}
-#line 1641 "bison.tab.cc" /* yacc.c:1646  */
+#line 149 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myClass) = new ClassDecl((Id *)((yyvsp[-6].myId)), (Id *)((yyvsp[-4].myId)), (VarDeclList *)((yyvsp[-2].variables)), (MethodDeclList *)((yyvsp[-1].methods)));}
+#line 1637 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 156 "bison.yy" /* yacc.c:1646  */
-    {(yyval.variables) = new VarDeclList((VarDeclList *)((yyvsp[-1].variables)), (VarDecl *)((yyvsp[0].variable))); printf("vars_vars\n");}
-#line 1647 "bison.tab.cc" /* yacc.c:1646  */
+#line 152 "bison.yy" /* yacc.c:1646  */
+    {(yyval.variables) = new VarDeclList((VarDeclList *)((yyvsp[-1].variables)), (VarDecl *)((yyvsp[0].variable))); }
+#line 1643 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 157 "bison.yy" /* yacc.c:1646  */
-    {(yyval.variables) = new VarDeclList((VarDecl *)((yyvsp[0].variable))); printf("vars_var\n");}
-#line 1653 "bison.tab.cc" /* yacc.c:1646  */
+#line 153 "bison.yy" /* yacc.c:1646  */
+    {(yyval.variables) = new VarDeclList((VarDecl *)((yyvsp[0].variable)));}
+#line 1649 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 160 "bison.yy" /* yacc.c:1646  */
-    {(yyval.variable) = new VarDecl((Type *)((yyvsp[-2].myType)), (Id *)((yyvsp[-1].myId))); printf("var\n");}
-#line 1659 "bison.tab.cc" /* yacc.c:1646  */
+#line 156 "bison.yy" /* yacc.c:1646  */
+    {(yyval.variable) = new VarDecl((Type *)((yyvsp[-2].myType)), (Id *)((yyvsp[-1].myId)));}
+#line 1655 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 163 "bison.yy" /* yacc.c:1646  */
-    {(yyval.methods) = new MethodDeclList((MethodDeclList *)((yyvsp[-1].methods)), (MethodDecl *)((yyvsp[0].myMethod))); printf("methods 1\n");}
-#line 1665 "bison.tab.cc" /* yacc.c:1646  */
+#line 159 "bison.yy" /* yacc.c:1646  */
+    {(yyval.methods) = new MethodDeclList((MethodDeclList *)((yyvsp[-1].methods)), (MethodDecl *)((yyvsp[0].myMethod)));}
+#line 1661 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 164 "bison.yy" /* yacc.c:1646  */
-    {(yyval.methods) = new MethodDeclList((MethodDecl *)((yyvsp[0].myMethod))); printf("methods 2\n");}
-#line 1671 "bison.tab.cc" /* yacc.c:1646  */
+#line 160 "bison.yy" /* yacc.c:1646  */
+    {(yyval.methods) = new MethodDeclList((MethodDecl *)((yyvsp[0].myMethod)));}
+#line 1667 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 168 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myMethod) = new MethodDecl((MethodModifier *)((yyvsp[-12].myModifier)), (Type *)((yyvsp[-11].myType)), (Id *)((yyvsp[-10].myId)), (ArgDeclList *)((yyvsp[-8].args)), (VarDeclList *)((yyvsp[-5].variables)), (StatementList *)((yyvsp[-4].statementSeq)), (Expr *)((yyvsp[-2].expression))); printf("method 1 (%s)\n", (yyvsp[-10].myId));}
-#line 1677 "bison.tab.cc" /* yacc.c:1646  */
+#line 164 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myMethod) = new MethodDecl((MethodModifier *)((yyvsp[-12].myModifier)), (Type *)((yyvsp[-11].myType)), (Id *)((yyvsp[-10].myId)), (ArgDeclList *)((yyvsp[-8].args)), (VarDeclList *)((yyvsp[-5].variables)), (StatementList *)((yyvsp[-4].statementSeq)), (Expr *)((yyvsp[-2].expression)));}
+#line 1673 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 170 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myMethod) = new MethodDecl((MethodModifier *)((yyvsp[-11].myModifier)),(Type *)((yyvsp[-10].myType)), (Id *)((yyvsp[-9].myId)), (ArgDeclList *)((yyvsp[-7].args)), (VarDeclList *)((yyvsp[-4].variables)), nullptr, (Expr *)((yyvsp[-2].expression))); printf("method 2 (%s)\n", (yyvsp[-9].myId));}
-#line 1683 "bison.tab.cc" /* yacc.c:1646  */
+#line 166 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myMethod) = new MethodDecl((MethodModifier *)((yyvsp[-11].myModifier)),(Type *)((yyvsp[-10].myType)), (Id *)((yyvsp[-9].myId)), (ArgDeclList *)((yyvsp[-7].args)), (VarDeclList *)((yyvsp[-4].variables)), nullptr, (Expr *)((yyvsp[-2].expression)));}
+#line 1679 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 172 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myMethod) = new MethodDecl((MethodModifier *)((yyvsp[-11].myModifier)),(Type *)((yyvsp[-10].myType)), (Id *)((yyvsp[-9].myId)), (ArgDeclList *)((yyvsp[-7].args)), nullptr, (StatementList *)((yyvsp[-4].statementSeq)), (Expr *)((yyvsp[-2].expression))); printf("method 3 (%s)\n", (yyvsp[-9].myId));}
-#line 1689 "bison.tab.cc" /* yacc.c:1646  */
+#line 168 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myMethod) = new MethodDecl((MethodModifier *)((yyvsp[-11].myModifier)),(Type *)((yyvsp[-10].myType)), (Id *)((yyvsp[-9].myId)), (ArgDeclList *)((yyvsp[-7].args)), nullptr, (StatementList *)((yyvsp[-4].statementSeq)), (Expr *)((yyvsp[-2].expression)));}
+#line 1685 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 174 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myMethod) = new MethodDecl((MethodModifier *)((yyvsp[-10].myModifier)),(Type *)((yyvsp[-9].myType)), (Id *)((yyvsp[-8].myId)), (ArgDeclList *)((yyvsp[-6].args)), nullptr, nullptr, (Expr *)((yyvsp[-2].expression))); printf("method 4 (%s)\n", (yyvsp[-8].myId));}
-#line 1695 "bison.tab.cc" /* yacc.c:1646  */
+#line 170 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myMethod) = new MethodDecl((MethodModifier *)((yyvsp[-10].myModifier)),(Type *)((yyvsp[-9].myType)), (Id *)((yyvsp[-8].myId)), (ArgDeclList *)((yyvsp[-6].args)), nullptr, nullptr, (Expr *)((yyvsp[-2].expression)));}
+#line 1691 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 177 "bison.yy" /* yacc.c:1646  */
+#line 173 "bison.yy" /* yacc.c:1646  */
     {(yyval.args) = new ArgDeclList();}
-#line 1701 "bison.tab.cc" /* yacc.c:1646  */
+#line 1697 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 178 "bison.yy" /* yacc.c:1646  */
-    {(yyval.args) = new ArgDeclList((ArgDeclList *)((yyvsp[-3].args)), (Type *)((yyvsp[-1].myType)), (Id *)((yyvsp[0].myId))); printf("args 2\n");}
-#line 1707 "bison.tab.cc" /* yacc.c:1646  */
+#line 174 "bison.yy" /* yacc.c:1646  */
+    {(yyval.args) = new ArgDeclList((ArgDeclList *)((yyvsp[-3].args)), (Type *)((yyvsp[-1].myType)), (Id *)((yyvsp[0].myId)));}
+#line 1703 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 179 "bison.yy" /* yacc.c:1646  */
-    {(yyval.args) = new ArgDeclList((Type *)((yyvsp[-1].myType)), (Id *)((yyvsp[0].myId))); printf("args 3\n");}
-#line 1713 "bison.tab.cc" /* yacc.c:1646  */
+#line 175 "bison.yy" /* yacc.c:1646  */
+    {(yyval.args) = new ArgDeclList((Type *)((yyvsp[-1].myType)), (Id *)((yyvsp[0].myId)));}
+#line 1709 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 182 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myModifier) = new MethodModifier("PUBLIC"); printf("public\n");}
-#line 1719 "bison.tab.cc" /* yacc.c:1646  */
+#line 178 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myModifier) = new MethodModifier("PUBLIC");}
+#line 1715 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 183 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myModifier) = new MethodModifier("PRIVATE"); printf("private\n");}
-#line 1725 "bison.tab.cc" /* yacc.c:1646  */
+#line 179 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myModifier) = new MethodModifier("PRIVATE");}
+#line 1721 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 186 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myType) = new BasicType(INT_ARRAY_); printf("int[]\n");}
-#line 1731 "bison.tab.cc" /* yacc.c:1646  */
+#line 182 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myType) = new BasicType(INT_ARRAY_);}
+#line 1727 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 187 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myType) = new BasicType(BOOL_); printf("boolean\n");}
-#line 1737 "bison.tab.cc" /* yacc.c:1646  */
+#line 183 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myType) = new BasicType(BOOL_);}
+#line 1733 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 188 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myType) = new BasicType(INT_); printf("int\n");}
-#line 1743 "bison.tab.cc" /* yacc.c:1646  */
+#line 184 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myType) = new BasicType(INT_);}
+#line 1739 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 189 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myType) = new ClassType((Id *)((yyvsp[0].myId))); printf("id\n");}
-#line 1749 "bison.tab.cc" /* yacc.c:1646  */
+#line 185 "bison.yy" /* yacc.c:1646  */
+    {(yyval.myType) = new ClassType((Id *)((yyvsp[0].myId)));}
+#line 1745 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 192 "bison.yy" /* yacc.c:1646  */
-    {(yyval.statementSeq) = new StatementList((StatementList *)((yyvsp[-1].statementSeq)), (Statement *)((yyvsp[0].mystatement))); printf("statements 1\n");}
-#line 1755 "bison.tab.cc" /* yacc.c:1646  */
+#line 188 "bison.yy" /* yacc.c:1646  */
+    {(yyval.statementSeq) = new StatementList((StatementList *)((yyvsp[-1].statementSeq)), (Statement *)((yyvsp[0].mystatement)));}
+#line 1751 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 193 "bison.yy" /* yacc.c:1646  */
-    {(yyval.statementSeq) = new StatementList((Statement *)((yyvsp[0].mystatement))); printf("statements 2\n");}
-#line 1761 "bison.tab.cc" /* yacc.c:1646  */
+#line 189 "bison.yy" /* yacc.c:1646  */
+    {(yyval.statementSeq) = new StatementList((Statement *)((yyvsp[0].mystatement)));}
+#line 1757 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 196 "bison.yy" /* yacc.c:1646  */
+#line 192 "bison.yy" /* yacc.c:1646  */
     {(yyval.mystatement) = new Statements((StatementList *)((yyvsp[-1].statementSeq))); printf("statement 1\n");}
-#line 1767 "bison.tab.cc" /* yacc.c:1646  */
+#line 1763 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 197 "bison.yy" /* yacc.c:1646  */
-    {(yyval.mystatement) = new IfStatement((Expr *)((yyvsp[-4].expression)), (Statement *)((yyvsp[-2].mystatement)), (Statement *)((yyvsp[0].mystatement))); printf("statement 2 if\n");}
-#line 1773 "bison.tab.cc" /* yacc.c:1646  */
+#line 193 "bison.yy" /* yacc.c:1646  */
+    {(yyval.mystatement) = new IfStatement((Expr *)((yyvsp[-4].expression)), (Statement *)((yyvsp[-2].mystatement)), (Statement *)((yyvsp[0].mystatement)));}
+#line 1769 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 198 "bison.yy" /* yacc.c:1646  */
-    {(yyval.mystatement) = new WhileStatement((Expr *)((yyvsp[-2].expression)), (Statement *)((yyvsp[0].mystatement))); printf("statement 3 while\n");}
-#line 1779 "bison.tab.cc" /* yacc.c:1646  */
+#line 194 "bison.yy" /* yacc.c:1646  */
+    {(yyval.mystatement) = new WhileStatement((Expr *)((yyvsp[-2].expression)), (Statement *)((yyvsp[0].mystatement)));}
+#line 1775 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 199 "bison.yy" /* yacc.c:1646  */
-    {(yyval.mystatement) = new PrintLineStatement((Expr *)((yyvsp[-2].expression))); printf("statement 4 sys out print\n");}
-#line 1785 "bison.tab.cc" /* yacc.c:1646  */
+#line 195 "bison.yy" /* yacc.c:1646  */
+    {(yyval.mystatement) = new PrintLineStatement((Expr *)((yyvsp[-2].expression)));}
+#line 1781 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 200 "bison.yy" /* yacc.c:1646  */
-    {(yyval.mystatement) = new AssignStatement((Id *)((yyvsp[-3].myId)), (Expr *)((yyvsp[-1].expression))); printf("statement 5 =\n");}
-#line 1791 "bison.tab.cc" /* yacc.c:1646  */
+#line 196 "bison.yy" /* yacc.c:1646  */
+    {(yyval.mystatement) = new AssignStatement((Id *)((yyvsp[-3].myId)), (Expr *)((yyvsp[-1].expression)));}
+#line 1787 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 201 "bison.yy" /* yacc.c:1646  */
-    {(yyval.mystatement) = new RandomAccessAssignStatement((Id *)((yyvsp[-6].myId)), (Expr *)((yyvsp[-4].expression)), (Expr *)((yyvsp[-1].expression))); printf("statement 6 id[]=\n");}
-#line 1797 "bison.tab.cc" /* yacc.c:1646  */
+#line 197 "bison.yy" /* yacc.c:1646  */
+    {(yyval.mystatement) = new RandomAccessAssignStatement((Id *)((yyvsp[-6].myId)), (Expr *)((yyvsp[-4].expression)), (Expr *)((yyvsp[-1].expression)));}
+#line 1793 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 204 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expressions) = new ExprList((ExprList *)((yyvsp[-2].expressions)), (Expr *)((yyvsp[0].expression))); printf("expressions 1\n");}
-#line 1803 "bison.tab.cc" /* yacc.c:1646  */
+#line 200 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expressions) = new ExprList((ExprList *)((yyvsp[-2].expressions)), (Expr *)((yyvsp[0].expression)));}
+#line 1799 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 205 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expressions) = new ExprList((Expr *)((yyvsp[0].expression))); printf("expression 2\n");}
-#line 1809 "bison.tab.cc" /* yacc.c:1646  */
+#line 201 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expressions) = new ExprList((Expr *)((yyvsp[0].expression)));}
+#line 1805 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 208 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), AND_T, (Expr *)((yyvsp[0].expression))); printf("and\n");}
-#line 1815 "bison.tab.cc" /* yacc.c:1646  */
+#line 204 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), AND_T, (Expr *)((yyvsp[0].expression)));}
+#line 1811 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 209 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), LESS_T, (Expr *)((yyvsp[0].expression))); printf("less\n");}
-#line 1821 "bison.tab.cc" /* yacc.c:1646  */
+#line 205 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), LESS_T, (Expr *)((yyvsp[0].expression)));}
+#line 1817 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 210 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), PLUS_T, (Expr *)((yyvsp[0].expression))); printf("PLUS\n");}
-#line 1827 "bison.tab.cc" /* yacc.c:1646  */
+#line 206 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), PLUS_T, (Expr *)((yyvsp[0].expression)));}
+#line 1823 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 211 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), MINUS_T, (Expr *)((yyvsp[0].expression))); printf("MINUS\n");}
-#line 1833 "bison.tab.cc" /* yacc.c:1646  */
+#line 207 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), MINUS_T, (Expr *)((yyvsp[0].expression)));}
+#line 1829 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 212 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), TIMES_T, (Expr *)((yyvsp[0].expression))); printf("*\n");}
-#line 1839 "bison.tab.cc" /* yacc.c:1646  */
+#line 208 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), TIMES_T, (Expr *)((yyvsp[0].expression)));}
+#line 1835 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 213 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), MOD_T, (Expr *)((yyvsp[0].expression))); printf("PERCENT\n");}
-#line 1845 "bison.tab.cc" /* yacc.c:1646  */
+#line 209 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), MOD_T, (Expr *)((yyvsp[0].expression)));}
+#line 1841 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 214 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), OR_T, (Expr *)((yyvsp[0].expression))); printf("or\n");}
-#line 1851 "bison.tab.cc" /* yacc.c:1646  */
+#line 210 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new BinaryExpr((Expr *)((yyvsp[-2].expression)), OR_T, (Expr *)((yyvsp[0].expression)));}
+#line 1847 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 215 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new RandomAccessExpr((Expr *)((yyvsp[-3].expression)), (Expr *)((yyvsp[-1].expression))); printf("[ ]\n");}
-#line 1857 "bison.tab.cc" /* yacc.c:1646  */
+#line 211 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new RandomAccessExpr((Expr *)((yyvsp[-3].expression)), (Expr *)((yyvsp[-1].expression)));}
+#line 1853 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 216 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new LengthExpr((Expr *)((yyvsp[-2].expression))); printf("LENGTH\n");}
-#line 1863 "bison.tab.cc" /* yacc.c:1646  */
+#line 212 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new LengthExpr((Expr *)((yyvsp[-2].expression)));}
+#line 1859 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 217 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new CallMethodExpr((Expr *)((yyvsp[-4].expression)), (Id *)((yyvsp[-2].myId)), nullptr); printf("%s()\n", (yyvsp[-2].myId));/*call method*/}
-#line 1869 "bison.tab.cc" /* yacc.c:1646  */
+#line 213 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new CallMethodExpr((Expr *)((yyvsp[-4].expression)), (Id *)((yyvsp[-2].myId)), nullptr);}
+#line 1865 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 218 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new CallMethodExpr((Expr *)((yyvsp[-5].expression)), (Id *)((yyvsp[-3].myId)), (ExprList *)((yyvsp[-1].expressions))); printf("%s()\n", (yyvsp[-3].myId));/*call method*/}
-#line 1875 "bison.tab.cc" /* yacc.c:1646  */
+#line 214 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new CallMethodExpr((Expr *)((yyvsp[-5].expression)), (Id *)((yyvsp[-3].myId)), (ExprList *)((yyvsp[-1].expressions)));}
+#line 1871 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 219 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new IntegerExpr(yylval.intVal); printf("INTEGER\n");}
-#line 1881 "bison.tab.cc" /* yacc.c:1646  */
+#line 215 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new IntegerExpr(yylval.intVal);}
+#line 1877 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 220 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new TrueExpr(); printf("true\n");}
-#line 1887 "bison.tab.cc" /* yacc.c:1646  */
+#line 216 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new TrueExpr();}
+#line 1883 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 221 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new FalseExpr(); printf("false\n");}
-#line 1893 "bison.tab.cc" /* yacc.c:1646  */
+#line 217 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new FalseExpr();}
+#line 1889 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 222 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = (yyvsp[0].myId); printf("id\n");}
-#line 1899 "bison.tab.cc" /* yacc.c:1646  */
+#line 218 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = (yyvsp[0].myId);}
+#line 1895 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 223 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new ThisExpr(); printf("THIS\n");}
-#line 1905 "bison.tab.cc" /* yacc.c:1646  */
+#line 219 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new ThisExpr();}
+#line 1901 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 224 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new NewIntArrayExpr((Expr *)((yyvsp[-1].expression))); printf("new int [exp]\n");}
-#line 1911 "bison.tab.cc" /* yacc.c:1646  */
+#line 220 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new NewIntArrayExpr((Expr *)((yyvsp[-1].expression)));}
+#line 1907 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 225 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new NewObjectExpr((Id *)((yyvsp[-2].myId))); printf("new (%s) ()\n", (yyvsp[-2].myId));}
-#line 1917 "bison.tab.cc" /* yacc.c:1646  */
+#line 221 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new NewObjectExpr((Id *)((yyvsp[-2].myId)));}
+#line 1913 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 226 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = new NotExpr((Expr *)((yyvsp[0].expression))); printf("!exp\n");}
-#line 1923 "bison.tab.cc" /* yacc.c:1646  */
+#line 222 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = new NotExpr((Expr *)((yyvsp[0].expression)));}
+#line 1919 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 227 "bison.yy" /* yacc.c:1646  */
-    {(yyval.expression) = (yyvsp[-1].expression); printf("(exp)\n");}
-#line 1929 "bison.tab.cc" /* yacc.c:1646  */
+#line 223 "bison.yy" /* yacc.c:1646  */
+    {(yyval.expression) = (yyvsp[-1].expression);}
+#line 1925 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 230 "bison.yy" /* yacc.c:1646  */
+#line 226 "bison.yy" /* yacc.c:1646  */
     {(yyval.myId) = new Id(std::string(yylval.nameId)); printf("ID");}
-#line 1935 "bison.tab.cc" /* yacc.c:1646  */
+#line 1931 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
 
-#line 1939 "bison.tab.cc" /* yacc.c:1646  */
+#line 1935 "bison.tab.cc" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2170,11 +2166,10 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 231 "bison.yy" /* yacc.c:1906  */
+#line 227 "bison.yy" /* yacc.c:1906  */
 
 
 int main (void) {
-//  yydebug=0;
   yyparse();
   delete pp;
 }

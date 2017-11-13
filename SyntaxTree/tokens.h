@@ -98,7 +98,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 22 "bison.yy" /* yacc.c:1909  */
+#line 18 "bison.yy" /* yacc.c:1909  */
 
 	int intVal;
 	char* nameId;
