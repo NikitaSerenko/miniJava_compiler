@@ -87,11 +87,7 @@ public:
 class MethodModifier
 {
 public:
-    MethodModifier(std::string label_):
-        label(label_)
-    {
-
-    }
+    MethodModifier(std::string label_): label(label_) {}
     std::string label;
 };
 
