@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+#GraphViz
+*.gv
+
+#BisonOutput
+parser.cpp
+token.h
+
+#Flex
+lex.yy.cc
