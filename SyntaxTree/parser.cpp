@@ -1560,13 +1560,13 @@ yyreduce:
     {
         case 2:
 #line 128 "bison.yy" /* yacc.c:1646  */
-    {(yyval.program) = new Program((MainClass *)((yyvsp[-1].mainClass))); (yyval.program)->accept(pp); printf("goal only\n");}
+    {(yyval.program) = new Program((MainClass *)((yyvsp[-1].mainClass))); (yyval.program)->accept(pp);}
 #line 1565 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
   case 3:
 #line 129 "bison.yy" /* yacc.c:1646  */
-    {(yyval.program) = new Program((MainClass *)((yyvsp[-2].mainClass)), (ClassDeclList *)((yyvsp[-1].classSeq))); (yyval.program)->accept(pp); printf("goal\n");}
+    {(yyval.program) = new Program((MainClass *)((yyvsp[-2].mainClass)), (ClassDeclList *)((yyvsp[-1].classSeq))); (yyval.program)->accept(pp);}
 #line 1571 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
@@ -1758,7 +1758,7 @@ yyreduce:
 
   case 35:
 #line 192 "bison.yy" /* yacc.c:1646  */
-    {(yyval.mystatement) = new Statements((StatementList *)((yyvsp[-1].statementSeq))); printf("statement 1\n");}
+    {(yyval.mystatement) = new Statements((StatementList *)((yyvsp[-1].statementSeq)));}
 #line 1763 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
@@ -1926,7 +1926,7 @@ yyreduce:
 
   case 63:
 #line 226 "bison.yy" /* yacc.c:1646  */
-    {(yyval.myId) = new Id(std::string(yylval.nameId)); printf("ID");}
+    {(yyval.myId) = new Id(std::string(yylval.nameId));}
 #line 1931 "bison.tab.cc" /* yacc.c:1646  */
     break;
 
