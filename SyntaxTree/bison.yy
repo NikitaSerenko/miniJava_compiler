@@ -125,8 +125,8 @@ Printer *pp = new Printer("./graph.gv");
 %right BANG
 
 %%
-goal  : main_class END 			{$$ = new Program((MainClass *)($1)); $$->accept(pp); printf("goal only\n");}
-      | main_class class_s END 	{$$ = new Program((MainClass *)($1), (ClassDeclList *)($2)); $$->accept(pp); printf("goal\n");}
+goal  : main_class END 			{$$ = new Program((MainClass *)($1)); $$->accept(pp);}
+      | main_class class_s END 	{$$ = new Program((MainClass *)($1), (ClassDeclList *)($2)); $$->accept(pp);}
       ;
 
 main_class  : CLASS id L_BRACKET
@@ -189,7 +189,7 @@ statement_s:	statement_s statement      {$$ = new StatementList((StatementList *
 		|	statement                          {$$ = new StatementList((Statement *)($1));}
 		;
 
-statement:	L_BRACKET statement_s R_BRACKET            {$$ = new Statements((StatementList *)($2)); printf("statement 1\n");}
+statement:	L_BRACKET statement_s R_BRACKET            {$$ = new Statements((StatementList *)($2));}
 		|	IF L_ROUND exp R_ROUND statement ELSE statement  {$$ = new IfStatement((Expr *)($3), (Statement *)($5), (Statement *)($7));}
 		|	WHILE L_ROUND exp R_ROUND statement              {$$ = new WhileStatement((Expr *)($3), (Statement *)($5));}
 		|	SYSTEMOUTPRINTLN L_ROUND exp R_ROUND SEMICOLON   {$$ = new PrintLineStatement((Expr *)($3));}
@@ -223,7 +223,7 @@ exp : exp AND exp 							{$$ = new BinaryExpr((Expr *)($1), AND_T, (Expr *)($3))
 		| L_ROUND exp R_ROUND               {$$ = $2;}
 		;
 
-id 	:	ID 						{$$ = new Id(std::string(yylval.nameId)); printf("ID");} ;
+id 	:	ID 						{$$ = new Id(std::string(yylval.nameId));} ;
 %%
 
 int main (void) {
