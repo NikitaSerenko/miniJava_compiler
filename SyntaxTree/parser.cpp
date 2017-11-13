@@ -67,7 +67,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "src/printer.h"  
+#include "src/pretty_printer.h"  
 
 extern "C" int yylex();
 
