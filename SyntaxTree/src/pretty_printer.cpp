@@ -1,4 +1,4 @@
-#include "printer.h"
+#include "pretty_printer.h"
 
 Printer::Printer(std::string path){
     out.open(path);
