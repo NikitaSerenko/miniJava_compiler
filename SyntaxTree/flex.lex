@@ -12,7 +12,6 @@ int columnNumber = 1;
 
 void updateLocation(char* yytext)
 {
-	printf(" ");
 	yylloc.first_line = lineNumber;
 	yylloc.first_column = columnNumber;
 
