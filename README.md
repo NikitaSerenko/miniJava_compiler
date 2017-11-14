@@ -3,6 +3,6 @@ mini Java compiler for ABBYY course
 
 ```
 make
-cat ../SamplesFactorial.java | ./parser
-dot -Tpng graph.gv -o graph.png
+cat ../Samples/Factorial.java | ./parser
+dot -Tpng SyntaxTree.gv -o SyntaxTree.png
 ```

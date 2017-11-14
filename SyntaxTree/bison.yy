@@ -12,7 +12,7 @@ void yyerror(char *s)
   printf ("%s\n", s);
 }
 
-Printer *pp = new Printer("./graph.gv");
+Printer *pp = new Printer("./SyntaxTree.gv");
 %}
 
 %union {
@@ -143,7 +143,7 @@ class   : CLASS id L_BRACKET R_BRACKET 								{$$ = new ClassDecl((Id *)($2), n
         | CLASS id L_BRACKET var_s R_BRACKET 						{$$ = new ClassDecl((Id *)($2), nullptr, (VarDeclList *)($4));}
         | CLASS id L_BRACKET method_s R_BRACKET 					{$$ = new ClassDecl((Id *)($2), nullptr, (MethodDeclList *)($4));}
         | CLASS id L_BRACKET var_s method_s R_BRACKET 				{$$ = new ClassDecl((Id *)($2), nullptr, (VarDeclList *)($4), (MethodDeclList *)($5));}
-        | CLASS id EXTENDS id L_BRACKET R_BRACKET 					{$$ = new ClassDecl((Id *)($2), (Id *)($4)); printf("class ext (%s)\n", $2 );}
+        | CLASS id EXTENDS id L_BRACKET R_BRACKET 					{$$ = new ClassDecl((Id *)($2), (Id *)($4));}
         | CLASS id EXTENDS id L_BRACKET var_s R_BRACKET 			{$$ = new ClassDecl((Id *)($2), (Id *)($4), (VarDeclList *)($6));}
         | CLASS id EXTENDS id L_BRACKET method_s R_BRACKET 			{$$ = new ClassDecl((Id *)($2), (Id *)($4), (MethodDeclList *)($6));}
         | CLASS id EXTENDS id L_BRACKET var_s method_s R_BRACKET 	{$$ = new ClassDecl((Id *)($2), (Id *)($4), (VarDeclList *)($6), (MethodDeclList *)($7));}

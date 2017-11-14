@@ -127,13 +127,11 @@ public:
     Id(std::string name_){
         if (name_!=""){
             name = name_;
-        }
-        std::cout << name_ << std::endl;
+        }   
     }
     void accept(Visitor* v) {
         v->visit(this);
     }
-
     std::string name;
 };
 
@@ -176,7 +174,6 @@ public:
     void accept(Visitor *v) {
         v->visit(this);
     }
-
     Id * id;
 };
 
