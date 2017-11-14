@@ -38,6 +38,8 @@
 parser.cpp
 token.h
 bison.output
+parser
 
 #Flex
 lex.yy.cc
+
