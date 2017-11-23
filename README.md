@@ -1,2 +1,8 @@
-# abbyy_compilers
-TSM repository for ABBYY course about compilers
+# miniJava_compiler
+mini Java compiler for ABBYY course
+
+```
+make
+cat ../Samples/Factorial.java | ./parser
+dot -Tpng SyntaxTree.gv -o SyntaxTree.png
+```
