@@ -12,7 +12,7 @@ void yyerror(char *s)
   printf ("%s\n", s);
 }
 
-Printer *pp = new Printer("./SyntaxTree.gv");
+Printer *pp = new Printer("./graph.gv");
 %}
 
 %union {
@@ -125,8 +125,8 @@ Printer *pp = new Printer("./SyntaxTree.gv");
 %right BANG
 
 %%
-goal  : main_class END 			{$$ = new Program((MainClass *)($1)); $$->accept(pp);}
-      | main_class class_s END 	{$$ = new Program((MainClass *)($1), (ClassDeclList *)($2)); $$->accept(pp);}
+goal  : main_class END 			{$$ = new Program((MainClass *)($1)); $$->accept(pp); printf("goal only\n");}
+      | main_class class_s END 	{$$ = new Program((MainClass *)($1), (ClassDeclList *)($2)); $$->accept(pp); printf("goal\n");}
       ;
 
 main_class  : CLASS id L_BRACKET
@@ -143,7 +143,7 @@ class   : CLASS id L_BRACKET R_BRACKET 								{$$ = new ClassDecl((Id *)($2), n
         | CLASS id L_BRACKET var_s R_BRACKET 						{$$ = new ClassDecl((Id *)($2), nullptr, (VarDeclList *)($4));}
         | CLASS id L_BRACKET method_s R_BRACKET 					{$$ = new ClassDecl((Id *)($2), nullptr, (MethodDeclList *)($4));}
         | CLASS id L_BRACKET var_s method_s R_BRACKET 				{$$ = new ClassDecl((Id *)($2), nullptr, (VarDeclList *)($4), (MethodDeclList *)($5));}
-        | CLASS id EXTENDS id L_BRACKET R_BRACKET 					{$$ = new ClassDecl((Id *)($2), (Id *)($4));}
+        | CLASS id EXTENDS id L_BRACKET R_BRACKET 					{$$ = new ClassDecl((Id *)($2), (Id *)($4)); printf("class ext (%s)\n", $2 );}
         | CLASS id EXTENDS id L_BRACKET var_s R_BRACKET 			{$$ = new ClassDecl((Id *)($2), (Id *)($4), (VarDeclList *)($6));}
         | CLASS id EXTENDS id L_BRACKET method_s R_BRACKET 			{$$ = new ClassDecl((Id *)($2), (Id *)($4), (MethodDeclList *)($6));}
         | CLASS id EXTENDS id L_BRACKET var_s method_s R_BRACKET 	{$$ = new ClassDecl((Id *)($2), (Id *)($4), (VarDeclList *)($6), (MethodDeclList *)($7));}
@@ -189,7 +189,7 @@ statement_s:	statement_s statement      {$$ = new StatementList((StatementList *
 		|	statement                          {$$ = new StatementList((Statement *)($1));}
 		;
 
-statement:	L_BRACKET statement_s R_BRACKET            {$$ = new Statements((StatementList *)($2));}
+statement:	L_BRACKET statement_s R_BRACKET            {$$ = new Statements((StatementList *)($2)); printf("statement 1\n");}
 		|	IF L_ROUND exp R_ROUND statement ELSE statement  {$$ = new IfStatement((Expr *)($3), (Statement *)($5), (Statement *)($7));}
 		|	WHILE L_ROUND exp R_ROUND statement              {$$ = new WhileStatement((Expr *)($3), (Statement *)($5));}
 		|	SYSTEMOUTPRINTLN L_ROUND exp R_ROUND SEMICOLON   {$$ = new PrintLineStatement((Expr *)($3));}
@@ -223,7 +223,7 @@ exp : exp AND exp 							{$$ = new BinaryExpr((Expr *)($1), AND_T, (Expr *)($3))
 		| L_ROUND exp R_ROUND               {$$ = $2;}
 		;
 
-id 	:	ID 						{$$ = new Id(std::string(yylval.nameId));} ;
+id 	:	ID 						{$$ = new Id(std::string(yylval.nameId)); printf("ID");} ;
 %%
 
 int main (void) {

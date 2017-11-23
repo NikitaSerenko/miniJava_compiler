@@ -46,11 +46,12 @@ enum BinaryType {
 
 class BinaryExpr: public Expr{
 public:
-    BinaryExpr(Expr * left_, BinaryType type_, Expr * right_):
+    BinaryExpr(Expr * left_, BinaryType type_, Expr * right_, Coordinates *coords):
         type(type_),
         left(left_),
         right(right_)
     {
+        coordinates = coords;
         switch(type){
             case AND_T:
                 label = "and";
@@ -87,7 +88,8 @@ public:
 
 class BooleanExpr: public Expr{
 public:
-    BooleanExpr(bool val_): val(val_){}
+    BooleanExpr(bool val_, Coordinates *coords): val(val_){
+        coordinates = coords;}
     virtual void accept(Visitor *v) {
         v->visit(this);
     }
@@ -95,10 +97,11 @@ public:
 };
 
 class CallMethodExpr: public Expr{public:
-    CallMethodExpr(Expr * expression_, Id * id_, ExprList * params_):
+    CallMethodExpr(Expr * expression_, Id * id_, ExprList * params_, Coordinates *coords):
         expression(expression_),
         id(id_)
     {
+        coordinates = coords;
         params.clear();
         if(params_){
             std::vector<Expr * > newVec(params_->getVector());
@@ -116,7 +119,7 @@ class CallMethodExpr: public Expr{public:
 
 class FalseExpr: public Expr{
 public:
-    FalseExpr(){}
+    FalseExpr(Coordinates *coords){coordinates = coords;}
     void accept(Visitor* v) {
         v->visit(this);
     }
@@ -124,7 +127,8 @@ public:
 
 class Id: public Expr{
 public:
-    Id(std::string name_){
+    Id(std::string name_, Coordinates *coords){
+        coordinates = coords;
         if (name_!=""){
             name = name_;
         }   
@@ -134,7 +138,7 @@ public:
     }
     std::string name;
 };
-
+/*
 class IdExpr: public Expr{
 public:
     IdExpr(std::string id_): id(id_){}
@@ -142,13 +146,13 @@ public:
         v->visit(this);
     }
     std::string id;
-};
+};*/
 
 class IntegerExpr: public Expr{
 public:
-    IntegerExpr(int val_):
+    IntegerExpr(int val_, Coordinates *coords):
         val(val_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -157,9 +161,9 @@ public:
 
 class LengthExpr: public Expr{
 public:
-    LengthExpr(Expr * object_):
+    LengthExpr(Expr * object_, Coordinates *coords):
         object(object_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -168,9 +172,9 @@ public:
 
 class NewObjectExpr: public Expr{
 public:
-    NewObjectExpr(Id * id_):
+    NewObjectExpr(Id * id_, Coordinates *coords):
         id(id_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -180,9 +184,9 @@ public:
 class NewIntArrayExpr: public Expr
 {
 public:
-    NewIntArrayExpr(Expr * size_):
+    NewIntArrayExpr(Expr * size_, Coordinates *coords):
         size(size_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -192,9 +196,9 @@ public:
 
 class NotExpr: public Expr{
 public:
-    NotExpr(Expr * right_):
+    NotExpr(Expr * right_, Coordinates *coords):
         right(right_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -204,10 +208,10 @@ public:
 
 class RandomAccessExpr: public Expr{
 public:
-    RandomAccessExpr(Expr * left_, Expr * right_):
+    RandomAccessExpr(Expr * left_, Expr * right_, Coordinates *coords):
         object(left_),
         position(right_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -219,7 +223,7 @@ public:
 
 class ThisExpr: public Expr{
 public:
-    ThisExpr(){}
+    ThisExpr(Coordinates *coords){coordinates = coords;}
     void accept(Visitor* v) {
         v->visit(this);
     }
@@ -227,7 +231,7 @@ public:
 
 class TrueExpr: public Expr{
 public:
-    TrueExpr(){}
+    TrueExpr(Coordinates *coords){coordinates = coords;}
     void accept(Visitor* v) {
         v->visit(this);
     }

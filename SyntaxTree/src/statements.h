@@ -54,10 +54,10 @@ public:
 
 class WhileStatement: public Statement{
 public:
-    WhileStatement(Expr * cond_, Statement * action_):
+    WhileStatement(Expr * cond_, Statement * action_, Coordinates *coords):
         cond(cond_),
         action(action_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -69,11 +69,11 @@ public:
 
 class RandomAccessAssignStatement: public Statement{
 public:
-    RandomAccessAssignStatement(Id * id_, Expr * position_, Expr * expression_):
+    RandomAccessAssignStatement(Id * id_, Expr * position_, Expr * expression_, Coordinates *coords):
         id(id_),
         position(position_),
         expression(expression_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -86,9 +86,9 @@ public:
 
 class PrintLineStatement: public Statement{
 public:
-    PrintLineStatement(Expr * object_):
+    PrintLineStatement(Expr * object_, Coordinates *coords):
         object(object_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -98,12 +98,11 @@ public:
 
 class IfStatement: public Statement{
 public:
-    IfStatement(Visitable * cond_, Statement * ifTrue_, Statement * ifFalse_):
+    IfStatement(Visitable * cond_, Statement * ifTrue_, Statement * ifFalse_, Coordinates *coords):
         cond(cond_),
         ifTrue(ifTrue_),
         ifFalse(ifFalse_)
-    {
-    }
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -115,10 +114,10 @@ public:
 
 class AssignStatement: public Statement{
 public:
-    AssignStatement(Id * left_, Expr * right_):
+    AssignStatement(Id * left_, Expr * right_, Coordinates *coords):
         left(left_),
         right(right_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
