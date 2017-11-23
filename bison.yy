@@ -6,8 +6,6 @@
 
 #include "SymbolTableVisitor/TableVisitor.h"
 
-#define COORDS Coordinates(yylloc.first_column, yylloc.first_line)
-
 extern "C" int yylex();
 
 void yyerror(char *s)
