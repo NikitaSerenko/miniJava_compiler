@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "SymbolTableVisitor/TableVisitor.h"
+#include "SymbolTable/TableVisitor.h"
 
 extern "C" int yylex();
 

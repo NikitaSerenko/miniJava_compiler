@@ -1,4 +1,4 @@
-#include "SymbolTableVisitor/TableVisitor.h"
+#include "SymbolTable/TableVisitor.h"
 #include "tokens.h"
 
 
