@@ -9,14 +9,13 @@
 class VarDecl: public Visitable
 {
 public:
-    VarDecl(Type * type_, Id * id_):
+    VarDecl(Type * type_, Id * id_, Coordinates *coords):
         type(type_),
         id(id_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v){
         v->visit(this);
     }
-
 
     Type * type;
     Id * id;
@@ -47,10 +46,10 @@ public:
 class ArgDecl: public Visitable
 {
 public:
-    ArgDecl(Type * type_, Id * id_):
+    ArgDecl(Type * type_, Id * id_, Coordinates *coords):
         type(type_),
         id(id_)
-    {}
+    {coordinates = coords;}
     void accept(Visitor *v) {
         v->visit(this);
     }
@@ -66,7 +65,8 @@ public:
     }
     ArgDeclList(ArgDeclList * prev, Type * type_, Id * id_)
     {
-        ArgDecl *newArg = new ArgDecl(type_, id_);
+
+        ArgDecl *newArg = new ArgDecl(type_, id_, id_->coordinates);
         vars.clear();
         std::vector<ArgDecl * > newVec(prev->getVector());
         vars.swap(newVec);
@@ -74,7 +74,7 @@ public:
     }
     ArgDeclList(Type * type_,Id * id_){
         vars.clear();
-        ArgDecl *newArg = new ArgDecl(type_, id_);
+        ArgDecl *newArg = new ArgDecl(type_, id_, id_->coordinates);
         vars.push_back((ArgDecl *)(newArg));
     }
 
@@ -87,7 +87,11 @@ public:
 class MethodModifier
 {
 public:
-    MethodModifier(std::string label_): label(label_) {}
+    MethodModifier(std::string label_):
+        label(label_)
+    {
+
+    }
     std::string label;
 };
 
@@ -95,12 +99,13 @@ class MethodDecl: public Visitable
 {
 public:
     MethodDecl(MethodModifier * modifier_, Type * type_, Id * id_, ArgDeclList * params_,
-             VarDeclList * vars_, StatementList * statements_,Expr * res_):
+             VarDeclList * vars_, StatementList * statements_,Expr * res_, Coordinates *coords):
         modifier(modifier_),
         type(type_),
         id(id_),
         res(res_)
     {
+        coordinates = coords;
         params.clear();
         if (params_){
             std::vector<ArgDecl * > newVecP(params_->getVector());
@@ -158,10 +163,11 @@ class MainClass: public Visitable
 public:
     MainClass(Id * id_, 
         Id * paramId_, 
-        StatementList * statements_):
+        StatementList * statements_, Coordinates *coords):
         id (id_),
         paramId(paramId_)
     {
+        coordinates = coords;
         std::vector<Statement * > newVec(statements_->getVector());
         statements.clear();
         statements.swap(newVec);
@@ -180,10 +186,11 @@ public:
     ClassDecl(Id * id_, 
         Id * extends_, 
         VarDeclList * vars_, 
-        MethodDeclList * methods_):
+        MethodDeclList * methods_, Coordinates *coords):
         id(id_),
         extends(extends_)
     {
+        coordinates = coords;
         std::vector<VarDecl * > newVec(vars_->getVector());
         vars.clear();
         vars.swap(newVec);
@@ -191,26 +198,28 @@ public:
         methods.clear();
         methods.swap(newVecM);
     }
-    ClassDecl(Id * id_, Id * extends_, VarDeclList * vars_):
+    ClassDecl(Id * id_, Id * extends_, VarDeclList * vars_, Coordinates *coords):
         id(id_),
         extends(extends_)
     {
+        coordinates = coords;
         std::vector<VarDecl * > newVec(vars_->getVector());
         vars.clear();
         vars.swap(newVec);
     }
-    ClassDecl(Id * id_, Id * extends_, MethodDeclList * methods_):
+    ClassDecl(Id * id_, Id * extends_, MethodDeclList * methods_, Coordinates *coords):
         id(id_),
         extends(extends_)
     {
+        coordinates = coords;
         std::vector<MethodDecl * > newVecM(methods_->getVector());
         methods.clear();
         methods.swap(newVecM);
     }
-    ClassDecl(Id * id_, Id * extends_):
+    ClassDecl(Id * id_, Id * extends_, Coordinates *coords):
         id(id_),
         extends(extends_)
-    {}
+    {coordinates = coords;}
 
     void accept(Visitor *v) {
         v->visit(this);

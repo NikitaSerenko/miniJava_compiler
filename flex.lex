@@ -1,11 +1,7 @@
 %{
 #include <stdlib.h>
-#include "src/visitor.h"
+#include "SyntaxTree/src/visitor.h"
 #include "tokens.h"
-
-void updateLocation(const char* yytext);
-
-#define YY_USER_ACTION updateLocation(yytext);
 
 int lineNumber = 1;
 int columnNumber = 1;
@@ -28,72 +24,68 @@ void updateLocation(char* yytext)
 	yylloc.last_column = columnNumber;
 }
 
+#define YY_USER_ACTION updateLocation(yytext);
+
 %}
 
 %option c++
 
 DIGIT [0-9]
-LETER [a-zA-Z_]
-id {LETER}({DIGIT}|{LETER})*
+LETTER [a-zA-Z_]
+id {LETTER}({DIGIT}|{LETTER})*
 IntegerLiteral [1-9]{DIGIT}*|0
 
 %%
-"true" 						return TRUE;
-"false" 					return FALSE;
-"public" 					return PUBLIC;
-"private"					return PRIVATE;
 "class" 					return CLASS;
 "var" 						return VAR;
 "extends" 					return EXTENDS;
-"new" 						return NEW;
-"this" 						return THIS;
-"return" 					return RETURN;
-"int" 						return INT;
-"boolean" 					return BOOLEAN;
-"length" 					return LENGTH;
+"public" 					return PUBLIC;
+"private"					return PRIVATE;
 "static void main" 			return STATICVOIDMAIN;
 "String" 					return STRING;
+"int" 						return INT;
+"boolean" 					return BOOLEAN;
 "if" 						return IF;
 "else" 						return ELSE;
 "while" 					return WHILE;
 "System.out.println" 		return SYSTEMOUTPRINTLN;
+"length" 					return LENGTH;
+"true" 						return TRUE;
+"false" 					return FALSE;
+"new" 						return NEW;
+"this" 						return THIS;
+"return" 					return RETURN;
 
-
-
-
-{LETER}({DIGIT}|{LETER})* 	{
-								yylval.nameId = yytext;
-								return ID;
-							}
-
-[1-9]{DIGIT}*|0		{
-						yylval.intVal = atoi(yytext);
-						return INTEGER;
-					}
+{LETTER}({DIGIT}|{LETTER})* 	{ yylval.nameId = yytext; return ID; }
+[1-9]{DIGIT}*|0		            { yylval.intVal = atoi(yytext); return INTEGER; }
 "//".* 						;
 [ \t\n]+ 					;
 
 "{" 						return L_BRACKET;
 "}" 						return R_BRACKET;
-"+" 						return PLUS;
-"-" 						return MINUS;
+"(" 						return L_ROUND;
+")" 						return R_ROUND;
 "\[" 						return L_SQUARE;
 "\]" 						return R_SQUARE;
-"*" 						return STAR;
-"<" 						return LESS;
-"!" 						return BANG;
+
 ";" 						return SEMICOLON;
+
+"-" 						return MINUS;
+"+" 						return PLUS;
 "%" 						return PERCENT;
 "/" 						return DIVIDE;
 "=" 						return EQUALS;
+
+"," 						return COMMA;
+"." 						return DOT;
+"*" 						return STAR;
+"<" 						return LESS;
+"!" 						return BANG;
+
 "&&" 						return AND;
 "||"						return OR;
-"," 						return COMMA;
-")" 						return R_ROUND;
-"(" 						return L_ROUND;
-"." 						return DOT;
 
-. 							printf("ERROR(%s)", yytext);
+. 							printf("Error! Error text => (%s)", yytext);
 
 
 %%

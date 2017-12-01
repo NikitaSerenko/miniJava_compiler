@@ -98,30 +98,30 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 18 "bison.yy" /* yacc.c:1909  */
+#line 20 "bison.yy" /* yacc.c:1909  */
 
-	int intVal;
-	char* nameId;
-  Program *program;
-  MainClass *mainClass;
-  TrueExpr* mytrue;
-  FalseExpr *myfalse;
-  ClassDecl *myClass;
-  VarDecl *variable;
-  VarDeclList *variables;
-  Expr *expression;
-  ClassDeclList *classSeq;
-  StatementList *statementSeq;
-  Statements *statements;
-  Statement *mystatement;
-  ExprList *expressions;
-  Id *myId;
-  MethodModifier* myModifier;
-  MethodDecl *myMethod;
-  MethodDeclList *methods;
-  Type *myType;
-  ArgDeclList *args;
-  BasicType *basicType;
+    int intVal;
+    char* nameId;
+    Program *program;
+    MainClass *mainClass;
+    TrueExpr* mytrue;
+    FalseExpr *myfalse;
+    ClassDecl *myClass;
+    VarDecl *variable;
+    VarDeclList *variables;
+    Expr *expression;
+    ClassDeclList *classSeq;
+    StatementList *statementSeq;
+    Statements *statements;
+    Statement *mystatement;
+    ExprList *expressions;
+    Id *myId;
+    MethodModifier* myModifier;
+    MethodDecl *myMethod;
+    MethodDeclList *methods;
+    Type *myType;
+    ArgDeclList *args;
+    BasicType *basicType;
 
 #line 127 "bison.tab.hh" /* yacc.c:1909  */
 };
